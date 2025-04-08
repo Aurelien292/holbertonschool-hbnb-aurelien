@@ -102,6 +102,8 @@ main {
 	  box-sizing: border-box;
 	  font-family: 'Times New Roman', Times, serif;
   }
+
+
   body{
 	  display: flex;
 	  justify-content: center;
@@ -112,7 +114,30 @@ main {
 	  background-size: cover;
 	  position: relative;
 	  z-index: -2;
+	  overflow: hidden;
+	  position: relative;
+	  animation: zoomMoveEffect 30s infinite linear;  
   }
+
+  @keyframes zoomMoveEffect {
+    0% {
+        background-position: center;
+		
+    }
+    50% {
+        background-position: top right;
+		
+    }
+	
+    85% {
+        background-position: bottom left;
+		
+    }
+	100% {
+        background-position: center;
+		
+    }
+}
 
   header {
     background-color: #ff9900;  /* Couleur d'arrière-plan de la bannière */
@@ -142,9 +167,11 @@ main {
     height: 50px;
 }
 
-/* Style du bouton "Back to Home" */
+/* Style du bouton "Home" */
 .back-home {
     color: white;
+	font-family: 'Merriweather', serif;
+	font-size: 20px; 
     text-decoration: none;
     font-weight: bold;
     padding: 8px 16px;
@@ -156,68 +183,6 @@ main {
     background-color: rgba(255, 255, 255, 0.2); /* Effet hover léger */
     text-decoration: none;
 }
-
-  nav{
-	  position: absolute;
-	  top: 40px;
-	  width: 524px;
-	  height: 90px;
-	  background: transparent;
-	  border-radius: 8px;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  
-  
-  }
-  nav a{
-	  position: relative;
-	  display: inline-block;
-	  font-size: 1em;
-	  font-weight: 500;
-	  color: #fff;
-	  text-decoration: none;
-	  padding: 0 23px;
-	  z-index: 1;
-  }
-  nav span {
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(45deg, #13a6b9, #4fac04);
-  border-radius:8px;
-  opacity: 0.5;
-  transition: .7s;
-  
-  }
-  nav a:hover~span{
-	  width: 95px;
-	  border: 3px double #fff;
-  }
-  nav a:nth-child(1):hover~span{
-	  left: 0;
-  }
-  
-  nav a:nth-child(2):hover~span{
-	  left: 95px;
-  }
-  
-  nav a:nth-child(3):hover~span{
-	  left: 189px;
-	  width: 110px;
-  }
-  
-  nav a:nth-child(4):hover~span{
-	  left: 289px;
-	  width: 115px;
-  }
-  
-  nav a:nth-child(5):hover~span{
-	  left: 413px;
-	  width: 110px;
-  }
   
   section{
 	  background-color: transparent;
@@ -249,6 +214,7 @@ main {
 	  padding-right: 40px;
 	  font-size: 15px;
 	  font-weight: bold;
+	  margin-top: 6.4px;
   }
   
   .input-box input ::placeholder {
@@ -263,6 +229,13 @@ main {
 	  transform: translateY(-50%);
 	  color: white;
   }
+
+  label {
+    font-family: 'Merriweather', serif;
+	font-weight: bold;
+    font-size: 16px;  /* Modifier la taille de la police */
+    color: #ffffff;  /* Modifier la couleur du texte */
+}
   
   .remember-forgot{
 	  display: flex;

@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const duration = 6000; // Durée totale du loader en ms (10 secondes)
     const steps = 100; // Nombre de mises à jour du pourcentage (1% par étape)
     const intervalTime = duration / steps; // Intervalle de temps entre chaque mise à jour
-    const toggleBtn = document.querySelector('.toggle-password');
+    
     const passwordInput = document.getElementById('password');
-
+    const toggleBtn = document.querySelector('.toggle-password');
     toggleBtn.addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
             this.src = '../assets/images/login/padlock.png';
@@ -21,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+ 
     // Fonction pour mettre à jour la progression du loader
     function updatePercentage(interval) {
         if (percentage < 100) {
