@@ -1,0 +1,140 @@
+/* Reset & base */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ebebeb;
+  }
+  
+  header {
+    background-color: #ff9900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+    margin-top: 50px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    gap: 10px;
+    color: white;
+  }
+  
+  .logo img {
+    width: 120px;
+    height: 50px;
+  }
+  
+  #login-button {
+    color: white;
+    text-decoration: none;
+    font-weight: Arial;
+    padding: 8px 15px;
+  }
+
+  main {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #000000;
+  }
+
+  #filter label {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+
+  #price-filter {
+    margin-bottom: 20px;
+  }
+
+  .filter {
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  select {
+    padding: 8px 12px;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Cards */
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .place-card {
+    display: flex;
+    flex-direction: column; /* Pour organiser le contenu en colonne */
+    justify-content: space-around; /* Pour distribuer l'espace entre le contenu et le bouton */
+    gap: 20px;
+    background: white;
+    padding: 10px;
+    width: 25%;
+    aspect-ratio: 1.5;
+    border-radius: 10px;
+    border: 1px solid #e68a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .place-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .place-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .place-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  .place-card button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 22%;
+  }
+  
+  .place-card button:hover {
+    background-color: #e68a00;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .place.card {
+        width: 90%;  /* plus large sur les petits écrans */
+        margin: 10px 0;
+    }
+  
+    .place-card {
+      width: 90%;
+    }
+  }
+  

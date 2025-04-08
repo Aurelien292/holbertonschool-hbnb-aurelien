@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../assets/images/logo.png" alt="Logo">
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="back-home">Home</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Formulaire de connexion -->
+        <section id="login-form-container">
+            <form id="login-form">
+                <h1>Connexion</h1>
+
+                <div class="input-box">
+                    <label for="email">Email:</label>
+                    <img src="../assets/images/login/user.png" alt="Image Description" width="32" height="32">
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password:</label>
+                    <img src="../assets/images/login/padlock.png" class= "toggle-password" alt="." width="32" height="32">
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Forgot Password</a>
+                </div>
+
+                <button type="submit" class="login-btn">Submit</button>
+
+                <!-- Message d'erreur -->
+                <p id="error-message" class="hidden"></p>
+            </form>
+        </section>
+
+        <!-- Loader placé APRÈS le formulaire (hors de la section) -->
+        <div class="loader-container hidden" id="loader-container">
+            <div class="loader"></div>
+            <div class="loader-text">.</div>
+        </div>
+    </main>
+
+    <script src="../assets/js/login.js"></script>
+</body>
+</html>

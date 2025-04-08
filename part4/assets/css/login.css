@@ -1,0 +1,308 @@
+/* login.css */
+
+/* Styles pour cacher le formulaire au départ */
+.hidden {
+    display: none;
+}
+main {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+#login-from-conainer{
+	width: 100%;
+	max-width: 420px;
+}
+.loader-container {
+	position: absolute;
+	bottom: 140px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-width: 420px;
+	height: 100px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	opacity: 1;
+	transition: opacity 4s ease;
+	pointer-events: auto;
+  }
+  
+  .loader-container.fade-out {
+		opacity: 0;
+	pointer-events: none;
+  }
+  
+  .loader{
+	  position: absolute;
+	  width: 120px;
+	  height: 120px;
+	  border: 16px solid #f3f2f1;
+	  border-radius: 50%;
+	  border-top: 20px solid #e0b53c;
+	  top: 50%;
+	  left: 50%;
+	  box-shadow: 0 0 2px 10px rgb(255, 255, 255, 0.2);
+	  animation: loader 2.5s linear infinite;
+  }
+  
+  .loader-text {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  font-family: cursive;
+	  font-size: 24px;
+	  color: red;
+	  animation: textAnimation 3.7s ease-in-out infinite;
+  }
+  
+  
+  @keyframes loader {
+	  0% {
+		  transform: translate(-50%, -50%) rotate(0deg);
+	  }
+	  50% {
+		  transform: translate(-50%, -50%) rotate(90deg);
+	  }
+	  75% {
+		  transform: translate(-50%, -50%) rotate(-45deg);
+	  }
+	  100% {
+		  transform:translate(-50%, -50%) rotate(360deg);
+	  }
+  }
+  
+  @keyframes textAnimation {
+	  0% {
+		  opacity: 0.5;
+		  transform: translate(-50%, -50%) scale(0.8);
+	  }
+	  50% {
+		  opacity: 1;
+		  transform: translate(-50%, -50%) scale(1);
+	  }
+	  100% {
+		  opacity: .5;
+		  transform: translate(-50%, -50%) scale(0.8);
+	  }
+  }
+  
+  .loader-container.hidden {
+	  display: none
+  }
+  
+  *{
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	  font-family: 'Times New Roman', Times, serif;
+  }
+  body{
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh;
+	  background: url(../images/login/login.jpg);
+	  background-position: center;
+	  background-size: cover;
+	  position: relative;
+	  z-index: -2;
+  }
+
+  header {
+    background-color: #ff9900;  /* Couleur d'arrière-plan de la bannière */
+    display: flex;
+    justify-content: space-between;  /* Espacement entre le logo et le texte */
+    align-items: center;  /* Centrer verticalement le contenu */
+    padding: 10px 20px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;  /* S'assurer que le header est au-dessus du contenu */
+	margin-top: 50px;
+  }
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.logo img {
+    width: 120px;
+    height: 50px;
+}
+
+/* Style du bouton "Back to Home" */
+.back-home {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.back-home:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Effet hover léger */
+    text-decoration: none;
+}
+
+  nav{
+	  position: absolute;
+	  top: 40px;
+	  width: 524px;
+	  height: 90px;
+	  background: transparent;
+	  border-radius: 8px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  
+  
+  }
+  nav a{
+	  position: relative;
+	  display: inline-block;
+	  font-size: 1em;
+	  font-weight: 500;
+	  color: #fff;
+	  text-decoration: none;
+	  padding: 0 23px;
+	  z-index: 1;
+  }
+  nav span {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(45deg, #13a6b9, #4fac04);
+  border-radius:8px;
+  opacity: 0.5;
+  transition: .7s;
+  
+  }
+  nav a:hover~span{
+	  width: 95px;
+	  border: 3px double #fff;
+  }
+  nav a:nth-child(1):hover~span{
+	  left: 0;
+  }
+  
+  nav a:nth-child(2):hover~span{
+	  left: 95px;
+  }
+  
+  nav a:nth-child(3):hover~span{
+	  left: 189px;
+	  width: 110px;
+  }
+  
+  nav a:nth-child(4):hover~span{
+	  left: 289px;
+	  width: 115px;
+  }
+  
+  nav a:nth-child(5):hover~span{
+	  left: 413px;
+	  width: 110px;
+  }
+  
+  section{
+	  background-color: transparent;
+	  border: 2px solid rgba(255, 255, 255, 0.2);
+	  backdrop-filter: blur(20px);
+	  padding: 30px;
+	  width: 420px;
+	  border-radius: 20px;
+	  margin-bottom: 120px;
+  }
+  section h1{
+	  font-size: 30px;
+	  text-align: center;
+	  color: rgb(185, 231, 231);
+	  margin-bottom: 20px;
+  }
+  .input-box{
+	  width: 100%;
+	  position: relative;
+	  margin-bottom: 25px;
+  }
+  .input-box input {
+	  width: 100%;
+	  padding: 15px;
+	  border-radius: 25px;
+	  background-color: transparent;
+	  border: 2px solid rgba(255,255,255,0.2);
+	  color: #fff;
+	  padding-right: 40px;
+	  font-size: 15px;
+	  font-weight: bold;
+  }
+  
+  .input-box input ::placeholder {
+	  
+	  color: #fff;
+  }
+  
+  .input-box img {
+	  position: absolute;
+	  right: 10px;
+	  top: 60%;
+	  transform: translateY(-50%);
+	  color: white;
+  }
+  
+  .remember-forgot{
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  margin-bottom: 14px;
+	  color:#fff;
+	  margin-bottom: 25px;
+  }
+  
+  .remember-forgot a, .register-link a{
+	  color: #fff;
+	  text-decoration: none;
+	  transition: 0.3s;
+	  font-weight: bold;
+  }
+  .remember-forgot a:hover, .register-link a{
+	  text-decoration: underline;
+  }
+  
+  .login-btn{
+	  font-size: 14px;
+	  width: 100%;
+	  padding: 15px;
+	  border-radius: 25px;
+	  outline: none;
+	  font-weight: bold;
+	  cursor: pointer;
+	  border: 2px solid transparent;
+	  transition: 0.5s;
+  }
+  .login-btn:hover{
+	  background-color: transparent;
+	  border: 2px solid rgba(255,255,255,0.2);
+	  color: #fff;
+	  transform: scale(0.9,0.9);
+  }
+  .register-link{
+	  text-align: center;
+	  margin-top: 25px;
+	  color: #fff;
+	  font-size: 14px;
+  }
