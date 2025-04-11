@@ -51,16 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, password }),
+                credentials: 'include' // Inclure les cookies dans la requête
             });
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data); // Affiche la réponse du serveur dans la console
+
+                const token = data.token;
+    if (data.token) {
+        localStorage.setItem('token',token); // Enregistre le token dans le localStorage
+        // Assure-toi que le cookie soit correctement configuré
+        document.cookie = `token=${token}; path=/; max-age=1000;SameSite=lax`; // Définit le cookie avec une durée de vie d'une heure
+        domain='localhost'; // Remplace par le domaine de ton application
+
+        console.log('Token enregistré dans le cookie');
+    } else {
+        console.error('Token manquant dans la réponse');
+    }
 
                 // Attendre que le pourcentage atteigne 100% avant de procéder
                 setTimeout(() => {
                     clearInterval(interval); // Arrêter le timer
                     loaderContainer.classList.add('fade-out'); // Cacher le loader avec un effet
-                    document.cookie = `token=${data.token}; path=/`; // Sauvegarde du token dans un cookie
+                     // Sauvegarde du token dans un cookie
                     window.location.href = 'index.html';  // Redirige l'utilisateur vers la page principale
                 }, duration);
             } else {

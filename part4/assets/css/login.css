@@ -149,8 +149,7 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10;  /* S'assurer que le header est au-dessus du contenu */
-	margin-top: 50px;
+    z-index: 10; 
   }
 
 .logo {
@@ -277,4 +276,17 @@ main {
 	  margin-top: 25px;
 	  color: #fff;
 	  font-size: 14px;
+  }
+
+  #footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #ff9900;  /* Couleur de fond, tu peux la changer */
+	color: white;  /* Couleur du texte */
+	text-align: center;  /* Centrer le texte */
+	padding: 10px 0;  /* Espacement autour du texte */
+	font-size: 17px;  /* Taille du texte */
+	font-family: Arial, sans-serif;  /* Police de caractère */
   }

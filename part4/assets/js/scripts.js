@@ -30,7 +30,7 @@ function displayPlaces(places) {
       card.innerHTML = `
           <h3 class="place-card-title">${place.title}</h3>
           <p class="place-card-price">Price per night: $${place.price}</p>
-          <button class="details-button" onclick="viewDetails(${place.id})">View Details</button>
+          <button class="details-button" onclick="viewDetails('${place.id}')">View Details</button>
       `;
 
       // Ajoute la carte au conteneur
@@ -62,10 +62,13 @@ function filterPlaces() {
 }
 
 
-// Fonction pour rediriger l'utilisateur vers la page de détails de la place
 function viewDetails(place_Id) {
-  window.location.href = `place.html?id=${place_Id}`;  // Redirige vers la page de détails avec l'ID de la place
-}
+  // Vérifie si l'ID de la place est passé correctement
+  console.log('Place ID:', place_Id);
+  
+  // Redirige l'utilisateur vers la page place.html avec l'ID en paramètre
+  window.location.href = `place.html?id=${place_Id}`;
+}  
 
 document.addEventListener('DOMContentLoaded', () => {
   // Récupère la valeur du filtre du localStorage (s'il existe)
@@ -79,3 +82,29 @@ document.addEventListener('DOMContentLoaded', () => {
     getPlaces();  // Sinon, récupère toutes les places
   }
 });
+
+/* Add reviews */
+
+// Ouvrir le modal quand le bouton "Add Review" est cliqué
+document.getElementById('openModalBtn').addEventListener('click', function() {
+  document.getElementById('reviewModal').style.display = 'block';
+});
+
+// Fermer le modal quand l'utilisateur clique sur le bouton "X"
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+  document.getElementById('reviewModal').style.display = 'none';
+});
+
+// Fermer le modal si l'utilisateur clique à l'extérieur de la fenêtre du modal
+window.addEventListener('click', function(event) {
+  // Si l'utilisateur clique sur le fond gris (reviewModal), fermer le modal
+  if (event.target === document.getElementById('reviewModal')) {
+    document.getElementById('reviewModal').style.display = 'none';
+  }
+});
+
+// Empêcher la fermeture du modal si l'utilisateur clique à l'intérieur du modal
+document.getElementById('reviewModal').addEventListener('click', function(event) {
+  event.stopPropagation(); // Empêche l'événement de se propager au window
+});
+

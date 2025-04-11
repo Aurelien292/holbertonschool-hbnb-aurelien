@@ -9,31 +9,22 @@ from app.api.v1.auth import api as auth_ns
 from config import config
 from flask_cors import CORS
 
+
+
 def create_app(config_class=config['development']):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 3600
-    app.config['CORS_HEADERS'] = 'Content-Type'
-    
     authorizations = {
-        'Bearer': {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Authorization',
-            'description': 'JWT Token'
-        }
+        'Bearer': {'type': 'apiKey','in': 'header','name': 'Authorization', 'description': 'JWT Token'}
     }
-
     api = Api(app, version='1.0', title='HBnB API', description='HBnB Application API', authorizations=authorizations, security='Bearer')
     
-    # Ajoute les options pour autoriser les cookies
-    CORS(app, origins="http://localhost:5500", supports_credentials=True , methods=["GET", "POST", "PUT", "DELETE"])
-
+    CORS(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
     db.init_app(app)
-    
     with app.app_context():
         db.create_all()
 

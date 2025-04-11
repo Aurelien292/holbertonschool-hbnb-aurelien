@@ -26,6 +26,16 @@ class ReviewList(Resource):
         """Register a new review"""
         current_user = get_jwt_identity()
         review_data = api.payload
+        # Assure-toi que 'rating' est bien un entier
+        try:
+            review_data['rating'] = int(review_data['rating'])
+        except ValueError:
+            return {'error': 'Rating must be an integer between 1 and 5'}, 400
+
+        # Validation pour éviter les notes en dehors de la plage (1-5)
+        if review_data['rating'] < 1 or review_data['rating'] > 5:
+            return {'error': 'Rating must be between 1 and 5'}, 400
+        
         review_count = facade.get_review_count_by_user_place(review_data['user_id'], review_data['place_id'])
         place = facade.get_place(review_data['place_id'])
         if not place:
@@ -118,4 +128,4 @@ class PlaceReviewList(Resource):
         reviews = facade.get_reviews_by_place(place_id)
         if reviews is None:
             return {'error': 'Place not found'}, 404
-        return [{'id': review.id, 'text': review.text, 'rating': review.rating, 'user_id': review.user.id, 'place_id': review.place.id} for review in reviews], 200
+        return [{'id': review.id, 'text': review.text, 'rating': review.rating, 'user_id': review.user.id, 'place_id': review.place.id, 'first_name': review.user.first_name,'last_name': review.user.last_name} for review in reviews], 200

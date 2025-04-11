@@ -3,10 +3,6 @@ from flask_jwt_extended import create_access_token
 from app.services import facade
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-
-from flask import make_response
-from app import api
-
 api = Namespace('auth', description='Authentication operations')
 
 # Model for input validation
@@ -34,13 +30,8 @@ class Login(Resource):
         # Step 3: Create a JWT token with the user's id and is_admin flag
         access_token = create_access_token(identity={'id': str(user.id), 'is_admin': user.is_admin})
         
-        # Step 4: Return the JWT token in a cookie
-        response = make_response({'message': 'Login successful', 'token': access_token}, 200)
-        
-        # Set the token in the cookie (for 1 hour)
-        response.set_cookie('token', access_token, max_age=1000, secure=True, httponly=False, samesite='None')
-        
-        return response
+        # Step 4: Return the JWT token to the client
+        return {'access_token': access_token}, 200
     
 @api.route('/protected')
 class ProtectedResource(Resource):
