@@ -69,13 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 5; i++) {
       const option = document.createElement('option');
       option.value = i;
-      option.textContent = i;
+      option.textContent = i === 1 ? `${i} Star` : `${i} Stars`;
       ratingSelect.appendChild(option);
     }
   }
 
   // Ouvrir et fermer le modal
   document.getElementById('addReviewBtn')?.addEventListener('click', () => {
+    const placeName = document.querySelector('.place-details h1')?.textContent || 'Unknown Place';
+    document.getElementById('placeName').textContent = placeName;
+  
     document.getElementById('reviewModal').style.display = 'block';
   });
 
@@ -118,15 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({ text, rating, user_id: userId, place_id: placeId })
       });
 
-      if (response.ok) {
-        alert('Review added successfully!');
-        document.getElementById('reviewModal').style.display = 'none';
-      } else {
-        const errorData = await response.json();
-        alert(`Error: ${errorData.message || 'Something went wrong...'}`);
-      }
-    } catch (error) {
-      alert('Error: ' + error.message);
-    }
+      const messageBox = document.getElementById('reviewMessage');
+messageBox.style.display = 'block';
+
+if (response.ok) {
+  messageBox.textContent = '✅ Review added successfully!';
+  messageBox.className = 'review-message success';
+
+  setTimeout(() => {
+    messageBox.style.display = 'none';
+    document.getElementById('reviewModal').style.display = 'none';
+    document.getElementById('reviewForm').reset();
+  }, 2500);
+} else {
+  const errorData = await response.json();
+  messageBox.textContent = `❌ ${errorData.error || 'Something went wrong...'}`;
+  messageBox.className = 'review-message error';
+}
+} catch (error) {
+  const messageBox = document.getElementById('reviewMessage');
+  messageBox.style.display = 'block';
+  messageBox.textContent = '❌ ' + error.message;
+  messageBox.className = 'review-message error';
+}
   });
 });

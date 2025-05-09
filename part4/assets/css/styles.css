@@ -1,6 +1,10 @@
 /* Reset & base */
-body {
+html,body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     background-color: #ebebeb;
   }
@@ -36,6 +40,7 @@ body {
   }
 
   main {
+    flex : 1;
     padding: 30px 20px;
     text-align: center;
   }
@@ -53,6 +58,8 @@ body {
 
   #price-filter {
     margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
   }
 
   .filter {
@@ -170,16 +177,18 @@ textarea {
 }
 
 #footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  
+  
+  
   width: 100%;
   background-color: #ff9900;  /* Couleur de fond, tu peux la changer */
   color: white;  /* Couleur du texte */
   text-align: center;  /* Centrer le texte */
-  padding: 10px 0;  /* Espacement autour du texte */
+  padding: 4px 0;  /* Espacement autour du texte */
   font-size: 16px;  /* Taille du texte */
   font-family: Arial, sans-serif;  /* Police de caractère */
+  box-shadow: 0 -7px 5px rgba(0,0,0,0.4); /* Ombre pour le haut du footer */
+  border-radius: 10px 10px 0 0; /* Coins arrondis en haut */
 }
 
 #reviews {
@@ -199,7 +208,7 @@ textarea {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 8px;
-  background-color: #ff5a5f;
+  background-color: #e68a00;
   color: white;
   border: none;
   display: block;
@@ -224,7 +233,7 @@ textarea {
 
 /* Contenu du modal */
 .modal-content {
-  background-color: #fff;
+  background-color: #f3f3f3;
   margin: 10% auto;
   padding: 20px;
   border-radius: 8px;
@@ -258,9 +267,52 @@ textarea, select {
 
 button[type="submit"] {
   padding: 10px;
-  background-color: #ff5a5f;
+  background-color: #e68a00;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-subtitle {
+  text-align: left;
+  font-size: 18px;
+  margin: 10px 0 5px;
+  color: black;
+}
+
+.form-label {
+  text-align: left;
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: black;
+}
+
+.review-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.95em;
+  display: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.review-message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.review-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
 }

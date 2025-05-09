@@ -28,7 +28,7 @@ __API RESTful__ : Interaction avec l'application via des endpoints API pour gér
 
 Clonez le dépôt et installez les dépendances nécessaires :
 ```
-git clone https://github.com/votre-utilisateur/hbnb.git
+git clone https://github.com/Aurelien292/hbnb.git
 cd hbnb
 pip install -r requirements.txt
 ```

@@ -4,7 +4,7 @@ async function getPlaces() {
       // Remplace l'URL de ton API par l'adresse correcte
       const response = await fetch('http://127.0.0.1:5000/api/v1/places');  // URL de l'API
       const places = await response.json();  // Récupère les données en JSON
-      console.log("Données récupérées :", places);
+      
       displayPlaces(places);  // Appelle la fonction pour afficher les données
   } catch (error) {
       console.error("Erreur lors de la récupération des places:", error);
@@ -19,7 +19,7 @@ function displayPlaces(places) {
   placesContainer.innerHTML = '';
 
   // Limite à 3 places maximum
-  const limitedPlaces = places.slice(0, 3);
+  const limitedPlaces = places.slice(0, 7);
 
   // Parcours des places récupérées et création des cartes
   limitedPlaces.forEach(place => {
@@ -53,6 +53,7 @@ function filterPlaces() {
             displayPlaces(places);
         } else {
             // Sinon, on filtre les places par prix
+              // Convertit la valeur en nombre
             const filteredPlaces = places.filter(place => place.price <= maxPrice);
             filteredPlaces.sort((a, b) => a.price - b.price);
             displayPlaces(filteredPlaces);
@@ -81,30 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     getPlaces();  // Sinon, récupère toutes les places
   }
-});
-
-/* Add reviews */
-
-// Ouvrir le modal quand le bouton "Add Review" est cliqué
-document.getElementById('openModalBtn').addEventListener('click', function() {
-  document.getElementById('reviewModal').style.display = 'block';
-});
-
-// Fermer le modal quand l'utilisateur clique sur le bouton "X"
-document.getElementById('closeModalBtn').addEventListener('click', function() {
-  document.getElementById('reviewModal').style.display = 'none';
-});
-
-// Fermer le modal si l'utilisateur clique à l'extérieur de la fenêtre du modal
-window.addEventListener('click', function(event) {
-  // Si l'utilisateur clique sur le fond gris (reviewModal), fermer le modal
-  if (event.target === document.getElementById('reviewModal')) {
-    document.getElementById('reviewModal').style.display = 'none';
-  }
-});
-
-// Empêcher la fermeture du modal si l'utilisateur clique à l'intérieur du modal
-document.getElementById('reviewModal').addEventListener('click', function(event) {
-  event.stopPropagation(); // Empêche l'événement de se propager au window
 });
 
